@@ -5,30 +5,30 @@ import { Heart, Coffee, Linkedin, Twitter, Instagram, Youtube } from 'lucide-rea
 const Footer = () => {
   const footerLinks = {
     about: [
-      { name: 'About Us', href: '#' },
-      { name: 'Editorial Policy', href: '#' },
-      { name: 'Our Team', href: '#' },
-      { name: 'Contact Us', href: '#' }
+      { name: 'About Us', href: '/about' },
+      { name: 'Editorial Policy', href: '/editorial-policy' },
+      { name: 'Our Team', href: '/about' },
+      { name: 'Contact Us', href: '/contact' }
     ],
     legal: [
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' },
-      { name: 'Cookie Policy', href: '#' },
-      { name: 'Advertise', href: '#' }
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Terms of Service', href: '/terms' },
+      { name: 'Cookie Policy', href: '/privacy' },
+      { name: 'Advertise', href: '/contact' }
     ],
     categories: [
-      { name: 'Latest News', href: '#' },
-      { name: 'Policy & Migration', href: '#' },
-      { name: 'Culture & Lifestyle', href: '#' },
-      { name: 'Business & Jobs', href: '#' }
+      { name: 'Latest News', href: '/news' },
+      { name: 'Policy & Migration', href: '/policy-migration' },
+      { name: 'Culture & Lifestyle', href: '/culture-lifestyle' },
+      { name: 'Business & Jobs', href: '/business-jobs' }
     ]
   };
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: Linkedin, href: '#', color: 'hover:text-blue-600' },
-    { name: 'Twitter/X', icon: Twitter, href: '#', color: 'hover:text-blue-400' },
-    { name: 'Instagram', icon: Instagram, href: '#', color: 'hover:text-pink-500' },
-    { name: 'YouTube', icon: Youtube, href: '#', color: 'hover:text-red-500' }
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/diaspora-lens', color: 'hover:text-blue-600' },
+    { name: 'Twitter/X', icon: Twitter, href: 'https://twitter.com/diasporalens', color: 'hover:text-blue-400' },
+    { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/diasporalens', color: 'hover:text-pink-500' },
+    { name: 'YouTube', icon: Youtube, href: 'https://youtube.com/@diasporalens', color: 'hover:text-red-500' }
   ];
 
   return (
@@ -38,7 +38,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-4">
+            <Link to="/" className="flex items-center space-x-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-lg">DL</span>
               </div>
@@ -46,7 +46,7 @@ const Footer = () => {
                 <h3 className="font-bold text-lg text-foreground">Diaspora Lens</h3>
                 <p className="text-xs text-muted-foreground">AfriEuropa News</p>
               </div>
-            </div>
+            </Link>
             <p className="text-muted-foreground text-sm mb-4">
               Amplifying African voices and stories across Europe. Your trusted source for diaspora news, culture, and community insights.
             </p>
@@ -111,18 +111,20 @@ const Footer = () => {
             {/* Social Media */}
             <div>
               <h5 className="font-medium text-foreground mb-3 text-sm">Follow Us</h5>
-              <div className="flex space-x-3">
+                <div className="flex space-x-3">
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
                   return (
-                    <Link
+                    <a
                       key={social.name}
-                      to={social.href}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`text-muted-foreground ${social.color} transition-colors`}
                       aria-label={social.name}
                     >
                       <Icon className="w-5 h-5" />
-                    </Link>
+                    </a>
                   );
                 })}
               </div>

@@ -7,13 +7,13 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigation = [
-    { name: 'News', href: '#' },
-    { name: 'Policy & Migration', href: '#' },
-    { name: 'Culture & Lifestyle', href: '#' },
-    { name: 'Profiles & Voices', href: '#' },
-    { name: 'Travel & Mobility', href: '#' },
-    { name: 'Business & Jobs', href: '#' },
-    { name: 'Events', href: '#' }
+    { name: 'News', href: '/news' },
+    { name: 'Policy & Migration', href: '/policy-migration' },
+    { name: 'Culture & Lifestyle', href: '/culture-lifestyle' },
+    { name: 'Profiles & Voices', href: '/profiles-voices' },
+    { name: 'Travel & Mobility', href: '/travel-mobility' },
+    { name: 'Business & Jobs', href: '/business-jobs' },
+    { name: 'Events', href: '/events' }
   ];
 
   return (
@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Site Name */}
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">DL</span>
             </div>
@@ -29,7 +29,7 @@ const Navbar = () => {
               <h1 className="font-bold text-xl text-foreground">Diaspora Lens</h1>
               <p className="text-xs text-muted-foreground">AfriEuropa News</p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">

@@ -2,6 +2,7 @@ import { Article } from '@/types/article';
 import ArticleCard from './ArticleCard';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface CategorySectionProps {
   title: string;
@@ -22,9 +23,11 @@ const CategorySection = ({ title, description, articles, viewAllLink }: Category
           </div>
           
           {viewAllLink && (
-            <Button variant="outline" className="flex items-center space-x-2 hover:bg-primary hover:text-primary-foreground">
-              <span>View All</span>
-              <ArrowRight className="w-4 h-4" />
+            <Button variant="outline" className="flex items-center space-x-2 hover:bg-primary hover:text-primary-foreground" asChild>
+              <Link to={viewAllLink}>
+                <span>View All</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </Button>
           )}
         </div>
@@ -39,8 +42,8 @@ const CategorySection = ({ title, description, articles, viewAllLink }: Category
         {/* Show More Button for Mobile */}
         {viewAllLink && (
           <div className="mt-8 text-center md:hidden">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-              Load More Articles
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+              <Link to={viewAllLink}>Load More Articles</Link>
             </Button>
           </div>
         )}

@@ -1,6 +1,7 @@
 import { Article } from '@/types/article';
 import { Button } from '@/components/ui/button';
 import { Clock, User } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface HeroProps {
   featuredArticle: Article;
@@ -14,7 +15,7 @@ const Hero = ({ featuredArticle, sideArticles }: HeroProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {/* Featured Article */}
           <div className="lg:col-span-2">
-            <div className="relative group cursor-pointer">
+            <Link to={`/article/${featuredArticle.id}`} className="relative group cursor-pointer block">
               <div className="relative overflow-hidden rounded-xl">
                 <img
                   src={featuredArticle.image}
@@ -49,13 +50,13 @@ const Hero = ({ featuredArticle, sideArticles }: HeroProps) => {
                       <span>{new Date(featuredArticle.publishedAt).toLocaleDateString()}</span>
                     </div>
                     
-                    <Button size="sm" className="bg-white text-primary hover:bg-gray-100">
-                      Read Full Story
+                    <Button size="sm" className="bg-white text-primary hover:bg-gray-100" asChild>
+                      <span>Read Full Story</span>
                     </Button>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* Side Articles */}
@@ -63,7 +64,7 @@ const Hero = ({ featuredArticle, sideArticles }: HeroProps) => {
             <h2 className="text-2xl font-bold text-white mb-6">Latest Headlines</h2>
             
             {sideArticles.map((article) => (
-              <div key={article.id} className="group cursor-pointer">
+              <Link key={article.id} to={`/article/${article.id}`} className="group cursor-pointer block">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 hover:bg-white/20 transition-colors">
                   <div className="flex space-x-3">
                     <img
@@ -88,7 +89,7 @@ const Hero = ({ featuredArticle, sideArticles }: HeroProps) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

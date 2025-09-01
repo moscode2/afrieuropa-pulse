@@ -2,6 +2,7 @@ import { Article } from '@/types/article';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Clock, User } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ArticleCardProps {
   article: Article;
@@ -67,8 +68,8 @@ const ArticleCard = ({ article, variant = 'default' }: ArticleCardProps) => {
       </CardContent>
       
       <CardFooter className="p-4 pt-0">
-        <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-          Read More
+        <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors" asChild>
+          <Link to={`/article/${article.id}`}>Read More</Link>
         </Button>
       </CardFooter>
     </Card>
